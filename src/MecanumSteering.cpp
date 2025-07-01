@@ -111,8 +111,19 @@ void MecanumSteering::joyCallback(const sensor_msgs::msg::Joy::SharedPtr joy)
   // Assignment of joystick axes to motor commands
   float fwd      = joy->axes[1];            // Range of values [-1:1]
   float left     = joy->axes[0];            // Range of values [-1:1]
-  float turn     = joy->axes[2];            // Range of values [-1:1]
-  float throttle = (joy->axes[3]+1.0)/2.0;  // Range of values [0:1]
+  float turn     = joy->axes[3];            // Range of values [-1:1]
+  float throttle = (joy->axes[2]+1.0)/2.0;  // Range of values [0:1]
+
+  if (joy->buttons[0] != 0) {
+    RCLCPP_INFO(this->get_logger(),  "%s", "Disabling robot");
+    _mc[0]->disable();
+    _mc[1]->disable();
+  }
+  if (joy->buttons[1] != 0) {
+    RCLCPP_INFO(this->get_logger(),  "%s", "Enabling robot");
+    _mc[0]->enable();
+    _mc[1]->enable();
+  }
 
   float vFwd  = throttle * fwd  * _vMax;
   float vLeft = throttle * left * _vMax;

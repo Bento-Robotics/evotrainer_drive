@@ -1,0 +1,58 @@
+/**:
+     ros__parameters:
+          #Distance between wheel/track contact points of left and right side
+          track: 0.12
+
+          # Distance between wheel/track contact points of front and rear axle
+          wheelBase: 0.14
+
+          # Diameter of driving wheel(s). For tracks use the diameter of the pinion
+          wheelDiameter: 0.06
+
+          # Socket CAN interface
+          canInterface: "can0"
+
+          frequencyScale: 32
+          maxPulseWidth: 127
+          inputWeight: 0.8
+
+          # Gearmotor/Encoder parameters
+          # Tested motors are:
+
+#          # 131: 1 Metal Gearmotor 37Dx57L mm with 64 CPR Encoder
+#          # gearRatio     : 131.0
+#          encoderRatio  : 64.0
+#          rpmMax        : 80.0
+#          # 99: 1 Metal Gearmotor 25Dx54L mm MP 12V with 48 CPR Encoder
+#          # gearRatio     : 99.0
+#          encoderRatio  : 48.0
+#          rpmMax        : 100.0
+#          # Nexus DC Motor 16002, Faulhaber 2342G012CR, 64: 1
+#          # gearRatio     : 64.0
+#          encoderRatio  : 48.0
+#          rpmMax        : 120.0
+          # Pololu Micro Metal Motor, 250: 1
+          gearRatio: 250.0
+          encoderRatio: 48.0
+          rpmMax: 88.0
+
+          # Channel assignment to motor mounting
+          idFrontLeft: 1
+          chFrontLeft: 0
+          idFrontRight: 1
+          chFrontRight: 1
+          idRearLeft: 0
+          chRearLeft: 1
+          idRearRight: 0
+          chRearRight: 0
+
+          # Polarity parameter, accepted values are 1 and -1.
+          # With this parameter the direction of rotation can be reversed
+          direction: 1
+
+          # PID controller parameters
+          kp: 3.0
+          ki: 1000.0
+          kd: 0.0
+          antiWindup: 1
+          invertEnc: 1
